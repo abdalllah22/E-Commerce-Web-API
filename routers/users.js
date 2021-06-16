@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 
 router.get('/',async (req,res)=>{
-    const userlist = await User.find().select('-passwordHash');
+    const userlist = await User.find().select('-passwordHash'); // select('name country') --> return these items only  
     if(!userlist){
         res.status(500).json({
             success: false
@@ -59,7 +59,7 @@ router.post('/login', async (req,res)=>{
     const secret = process.env.secret;
     
     if(!user){
-        return res.status(400).send('the email or password is wrong') 
+        return res.status(400).send({message:'the email is wrong'}) 
     }
     
     if(user && bcrypt.compareSync(req.body.password,user.passwordHash)){
@@ -79,7 +79,7 @@ router.post('/login', async (req,res)=>{
             token: token
         });
     } else {
-        res.status(400).send('the email or password is wrong');
+        res.status(400).send({message:'the password is wrong'});
     }
 })
 
