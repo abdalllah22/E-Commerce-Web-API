@@ -9,10 +9,10 @@ const errorHandler = require('./helpers/error-handler');
 
 
 // routers
-const categoriesRouter = require('./routers/categories');
-const productsRouter = require('./routers/products');
-const usersRouter = require('./routers/users');
-const ordersRouter = require('./routers/orders');
+const categoriesRouter = require('./routes/categories');
+const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/users');
+const ordersRouter = require('./routes/orders');
 
 
 
